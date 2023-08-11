@@ -26,15 +26,25 @@ function App() {
       <Alert>
         Hello <i>World!</i>
       </Alert>
-      <Button onClick={()=>console.log("Button Clicked!")} >
-        Don't Push Me<b> Bro!</b>
+      <Button
+        onClick={() => console.log("Primary Button Clicked!")}
+        color="primary"
+      >
+        Don't Push Me <b>Bro!</b>
       </Button>
-      
+
       <ListGroup
         items={hobbies}
         heading="Choose your favorite Hobby"
         onSelectItem={handleSelectItem}
       />
+
+      <Button
+        onClick={() => console.log("Warning Button Click")}
+        color="warning"
+      >
+        Push Me <b>Bro!</b>
+      </Button>
     </>
   );
 }
