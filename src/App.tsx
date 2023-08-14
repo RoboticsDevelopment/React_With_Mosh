@@ -1,9 +1,16 @@
 import ListGroup from "./components/ListGroup";
-import Alert from "./components/Alert";
+import AlertX from "./components/AlertX";
+import Alert2 from "./components/Alert";
 import Button from "./components/Button";
+import { useState } from "react";
 
 function App() {
+  const [alertVisible, setAlertVisibility] = useState(false);
+  const [buttonColor, setButtonColor] = useState("primary");
+  const [gangster, setGangster] = useState(false);
+
   let animals = ["Cat", "Dog", "Dragon", "Lizard"];
+  let pool = ["Noodle", "Wasp", "Towel", "Floatie"];
   let hobbies = [
     "Flying Drones",
     "Collecting Bullion",
@@ -18,20 +25,14 @@ function App() {
 
   return (
     <>
+      { alertVisible && <Alert2 onClose={()=> setAlertVisibility(false)}>Chicken Butt!</Alert2>}
+      <Button color ="primary" onClick={()=> setAlertVisibility(true)}>Guess What?</Button>
+
       <ListGroup
         items={animals}
         heading="Choose your Favorite Animal"
         onSelectItem={handleSelectItem}
       />
-      <Alert>
-        Hello <i>World!</i>
-      </Alert>
-      <Button
-        onClick={() => console.log("Primary Button Clicked!")}
-        color="primary"
-      >
-        Don't Push Me <b>Bro!</b>
-      </Button>
 
       <ListGroup
         items={hobbies}
@@ -39,12 +40,11 @@ function App() {
         onSelectItem={handleSelectItem}
       />
 
-      <Button
-        onClick={() => console.log("Warning Button Click")}
-        color="warning"
-      >
-        Push Me <b>Bro!</b>
-      </Button>
+
+      <Button color ="primary" onClick={()=> setAlertVisibility(true)}>Don't Push me Bro!</Button>
+      { alertVisible && <Alert2 onClose={()=> setAlertVisibility(false)}>Now you done it!</Alert2>}
+
+      
     </>
   );
 }
